@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlene Palapal - Portfolio & Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    /* Color Scheme */
+    :root {
+        --primary: #4B0909;       /* Deep burgundy */
+        --secondary: #F8E8E8;     /* Light red-white */
+        --accent: #A02020;        /* Bright crimson */
+        --text-dark: #1A0000;     /* Almost black for text */
+        --text-light: #FFFFFF;     /* White for dark backgrounds */
+    }
+
+    html {
+    scroll-behavior: smooth;
+    }
+    
+    /* Base Styles */
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--secondary);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-width: 320px;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 5%;
+      box-sizing: border-box;
+    }
+
+    .logo-img {
+        height: 50px;
+        width: auto;
+        max-width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-container {
+        margin: 0;
+        padding: 1rem 0;
+    }
+    .logo-img:hover {
+        transform: scale(1.05);
+    }
+    #name {
+        font-family: 'Merriweather', serif;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 0.5rem;
+        color: var(--text-light);
+    }
+    
+    header p {
+        margin: 0.5rem 0;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    header a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    header a:hover {
+        color: var(--accent);
+    }
+    
+    /* Navigation */
+    nav {
+    display: flex;
+    align-items: center;
+    gap: 3rem; 
+    }
+    
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: clamp(1rem, 3vw, 2rem);
+    }
+    
+    nav ul li {
+        margin: 0;
+    }
+    
+    nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    border-radius: 0.5rem;
+    z-index: 1;
+    }
+
+    nav a:hover {
+    color: white; 
+    }
+
+    nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent); 
+    border-radius: 0.5rem;
+    z-index: -1;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    }
+
+    nav a:hover::before {
+    transform: scaleX(1);
+    }
+
+    .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 5%;
+    box-sizing: border-box;
+    }
+
+    .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; 
+    }
+
+    .nav-links {
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    }
+
+    .social-icons {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    }
+
+    .social-icons a {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+    display: inline-block;
+    }
+
+    .social-icons a:hover {
+    color: white; 
+    }
+    
+    main {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    
+    /* Decorative circles */
+    .decorative-circles {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.08;
+        background-color: var(--accent);
+        filter: blur(2px); 
+        animation: float var(--duration) ease-in-out infinite alternate;
+        animation-delay: var(--delay);
+    }
+
+    @media (min-width: 1200px) {
+        .circle:nth-child(1) { --size: 400px; }
+        .circle:nth-child(2) { --size: 250px; }
+        .circle:nth-child(3) { --size: 200px; }
+        .circle:nth-child(4) { --size: 300px; }
+        .circle:nth-child(5) { --size: 220px; }
+        .circle:nth-child(6) { --size: 280px; }
+    }
+    @keyframes float {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(15px, 15px) rotate(3deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    section {
+        position: relative;
+        padding: 3rem 0;
+        margin-bottom: 0;
+    }
+    
+    section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 100%;
+        background: inherit;
+        z-index: -1;
+    }
+    
+    section > article, 
+    section > .profile-section,
+    section > h2 {
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 5%;
+        box-sizing: border-box;
+    }
+    
+    .profile-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+        width: 100%;
+        min-height: 100vh;
+        padding: 5%;
+        position: relative;
+    }
+
+    
+    .profile-picture-container {
+        position: relative;
+        flex: 0 0 min(350px, 80vw);
+        height: min(350px, 80vw); 
+    }
+        
+    .profile-bg {
+        background-color: white;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .profile-picture-container {
+        position: relative;
+        flex: 0 0 min(450px, 85vw); 
+        height: min(450px, 85vw);
+    }
+
+    .portrait-media {
+        height: 380px; 
+        width: 280px;
+        margin: 0 auto; 
+        position: relative;
+    }
+
+    .portrait-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top; 
+        transition: transform 0.5s ease;
+    }
+
+    .profile-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px; 
+        border: 10px solid white; 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
+        transform: rotate(-3deg) translate(15px, -15px); 
+    }
+
+    .intro-box {
+        flex: 1;
+        min-width: min(400px, 90vw); 
+        max-width: 750px; 
+        background-color: white;
+        border-radius: 25px; 
+        padding: 3rem; 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .intro-box h2 {
+        font-size: 2.5rem; 
+        margin-bottom: 0.8rem; 
+    }
+
+    .professional-title {
+        font-size: 1.4rem; 
+        margin-bottom: 2rem;
+    }
+
+    .professional-summary p {
+        font-size: 1.15rem; 
+        line-height: 1.9; 
+        margin-bottom: 1.8rem; 
+    }
+    /* Updated Resume Section */
+    #resume {
+        background-color: white;
+    }
+    
+    #resume h2 {
+        color: var(--primary);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+    }
+
+    .resume-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 2rem;
+        padding: 1rem 5%;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    
+    .resume-category {
+        flex: 1 1 250px;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        min-width: 250px;
+        max-width: 300px;
+    }
+
+    .resume-category:hover {
+        flex: 1.5 1.5 300px;
+        transform: translateX(10px) scale(1.05);
+        z-index: 1;
+    }
+
+    .resume-item {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border-left: 3px solid var(--accent);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .resume-item:hover {
+        background-color: rgba(160, 32, 32, 0.05);
+        transform: translateX(5px);
+    }
+    
+    .resume-item h4 {
+        color: var(--primary);
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: clamp(1.1rem, 2vw, 1.2rem);
+    }
+    
+    .resume-item .date {
+        color: var(--accent);
+        font-style: italic;
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+    
+    .resume-item ul {
+        margin: 0.5rem 0 0 1.5rem;
+        padding: 0;
+    }
+    
+    .resume-item li {
+        margin-bottom: 0.3rem;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+    
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .skill-tag {
+        background-color: var(--secondary);
+        color: var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+        transition: all 0.3s;
+    }
+    
+    .skill-tag:hover {
+        background-color: var(--accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    h2 {
+        font-family: 'Merriweather', serif;
+        color: var(--primary);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.5rem;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+    }
+    
+    h3 {
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        position: relative;
+        display: inline-block;
+    }
+    
+    h3::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent);
+    }
+    /* Circular Resume Sections */
+    .resume-category {
+        position: relative;
+        padding: clamp(1.5rem, 3vw, 2rem);
+        margin-bottom: 3rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border: 2px solid var(--accent);
+        overflow: hidden;
+    }
+
+    .resume-category::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px dashed var(--accent);
+        border-radius: 60px;
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    .resume-category h3 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .resume-category h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--accent);
+    }
+
+    /* Section Theme Contrast */
+    .section-light {
+        background-color: white;
+        color: var(--text-dark);
+    }
+
+    .section-dark {
+        background-color: var(--primary);
+        color: var(--text-light);
+    }
+
+    .section-dark h2,
+    .section-dark h3,
+    .section-dark a,
+    .section-dark label,
+    .section-dark legend {
+        color: var(--text-light);
+    }
+
+    .section-dark a:hover {
+        color: var(--accent);
+    }
+
+    .section-dark input,
+    .section-dark textarea,
+    .section-dark select {
+        background-color: #fff;
+        color: var(--text-dark);
+        border: 1px solid #ddd;
+    }
+
+    .section-dark button#send {
+        background-color: var(--accent);
+        color: white;
+    }
+
+    .section-dark button#send:hover {
+        background-color: #8B0000;
+    }
+
+    .section-dark button#clear {
+        background-color: #888;
+        color: white;
+    }
+
+    .section-dark button#clear:hover {
+        background-color: #555;
+    }
+    
+    
+    /* Contact Form */
+    form {
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+
+    fieldset {
+        border: none;
+        padding: 0;
+    }
+
+    legend {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+            -space: nowrap;
+        border-width: 0;
+    }
+    
+    label {
+        display: block;
+        margin: 1rem 0 0.5rem;
+        color: var(--primary);
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    input, textarea, select {
+        width: 100%;
+        padding: clamp(0.6rem, 1.5vw, 0.8rem);
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    textarea {
+        min-height: 100px;
+    }
+    
+    button {
+        padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1rem, 2.5vw, 1.5rem);
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-right: 1rem;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    #send {
+        background-color: var(--accent);
+        color: white;
+    }
+    
+    #send:hover {
+        background-color: #8B0000;
+    }
+    
+    #clear {
+        background-color: #666;
+        color: white;
+    }
+    
+    #clear:hover {
+        background-color: #444;
+    }
+
+    .contact-container {
+        display: flex;
+        gap: clamp(2rem, 5vw, 4rem);
+        max-width: 100%;
+        margin: 2rem auto 0;
+        padding: 0 5%;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .contact-info {
+        flex: 1;
+        min-width: min(300px, 90%);
+        padding: 0;
+    }
+
+    .contact-info h3 {
+        color: var(--primary);
+        margin-top: 0;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .contact-info h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent);
+    }
+
+    .contact-details {
+        margin-top: 1.5rem;
+    }
+
+    .contact-details p {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .contact-details i {
+        margin-right: 1rem;
+        color: var(--accent);
+        min-width: 20px;
+    }
+
+        .contact-form {
+            flex: 1;
+            min-width: min(300px, 90%);
+            padding: 0;
+        }
+
+    
+    footer {
+        background-color: var(--primary);
+        color: var(--text-light);
+        text-align: center;
+        padding: 1.5rem 0;
+        margin-top: 0;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 10;
+    }
+        header::before, footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+    }
+
+    footer::before {
+        top: auto;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section[data-animation] {
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.2s;
+      animation-fill-mode: forwards;
+      }
+
+    /* Portfolio Layout */
+    .portfolio-container {
+        display: flex;
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .portfolio-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .portfolio-column h3 {
+        color: var(--text-light);
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent);
+        text-align: center;
+    }
+
+    /* Portrait Items */
+    .portfolio-item {
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 1rem;
+    }
+
+    .portfolio-item:hover {
+        transform: translateY(-8px);
+        background: rgba(255,255,255,0.12);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .portrait-media {
+        height: 400px;
+        width: 280px;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .portrait-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: scale(1.02);
+    }
+
+    .portfolio-content {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    .portfolio-content h4 {
+        color: var(--text-light);
+        margin: 0.8rem 0 0.3rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .portfolio-content p {
+        color: rgba(255,255,255,0.8);
+        margin: 0;
+        font-size: 0.95rem;
+        font-style: italic;
+    }
+
+    /* Hover Effects */
+    .portfolio-item:hover .portrait-image {
+        transform: scale(1.05);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .portrait-media {
+            height: 350px;
+            width: 240px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .portfolio-container {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .portrait-media {
+            height: 400px;
+            width: 100%;
+            max-width: 320px;
+        }
+        
+        .portfolio-column {
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .portrait-media {
+            height: 350px;
+        }
+        
+        .portfolio-content h4 {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .portfolio-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .portfolio-label {
+                text-align: center !important;
+                padding: 1rem !important;
+            }
+
+            .portrait-media {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .portfolio-media,
+            .portrait-media {
+                height: 300px; 
+            }
+            
+            .left-label, .right-label {
+                order: 2;
+            }
+            
+            .portrait-item {
+                min-height: auto;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .portfolio-image {
+            transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(1.05);
+        }
+
+        .portfolio-item:hover .portrait-image {
+            transform: scale(1.03);
+        }
+
+        /* Section title styling */
+        #portfolio h2 {
+            text-align: center;
+            margin: 0 auto clamp(2rem, 5vw, 4rem) auto;
+            position: relative;
+            display: block; 
+            width: max-content; 
+            animation: fadeInUp 1s forwards;
+            left: auto; 
+            transform: none; 
+        }
+
+        #portfolio h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%; 
+            transform: translateX(-50%) scaleX(0.5); 
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transform-origin: center;
+        }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary);
+        color: var(--text-light);
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--accent);
+        transform: translateY(-3px);
+    }
+    @media (min-width: 768px) {
+    .back-to-top {
+        opacity: 0.8;
+        visibility: visible;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--primary);
+        color: var(--text-light);
+        text-align: center;
+        padding: 1.5rem 0;
+        margin-top: 0;
+    }
+    
+    footer a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    footer a:hover {
+        color: var(--accent);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+            .portfolio-item {
+                width: 80%;
+            }
+            
+            .portfolio-item:nth-child(odd),
+            .portfolio-item:nth-child(even) {
+                margin-right: 10%;
+                margin-left: 10%;
+                transform: none;
+            }
+        }
+        
+    @media (max-width: 768px) {
+        .header-container {
+            flex-direction: column;
+            padding: 0 5%;
+        }
+        
+        .logo-container {
+            margin: 0 auto 1rem;
+        }
+        
+        nav ul {
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .profile-section {
+            flex-direction: column;
+            padding: 0 5%;
+        }
+        
+        .profile-picture-container {
+            flex: 0 0 min(250px, 70vw);
+            height: min(250px, 70vw);
+        }
+
+        section > article, 
+        section > .profile-section,
+        section > h2 {
+            padding: 0 5%;
+        }
+            
+        .portfolio-container {
+            flex-direction: column;
+        }
+            
+        .portfolio-media {
+            height: clamp(180px, 40vw, 250px);
+        }
+            
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .contact-info,
+        .contact-form {
+            width: 100%;
+        }
+        
+        .contact-container {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 0 5%;
+        }
+            
+        .nav-container {
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+            
+        .logo-container {
+            margin: 0 auto 1rem;
+        }
+        
+        .nav-links,
+        .social-icons {
+            margin: 0;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-group {
+        gap: 1rem;
+        }
+        .social-icons {
+        gap: 0.75rem;
+        }
+
+        nav {
+        gap: 1.5rem;
+        }
+        
+        .resume-category {
+            border-radius: 30px;
+            padding: 1.5rem;
+        }
+        
+        .resume-category::before {
+            border-radius: 40px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+          .skills-list {
+              justify-content: center;
+          }
+          
+          button {
+              margin-right: 0.5rem;
+              margin-bottom: 0.5rem;
+          }
+          
+          .resume-item {
+              padding: 1rem;
+          }
+          
+          .portfolio-item h4 {
+              font-size: 1.1rem;
+          }
+          
+          .portfolio-item p {
+              font-size: 0.9rem;
+          }
+      }
+</style>
+
+</head>
+
+<body>
+    <!-- Header with Basic Details -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Carlene's Logo" class="logo-img">
+            </div>
+            <nav>
+                <div class="nav-group">
+                    <ul class="nav-links">
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/hanzz.carlenee/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/m33p_ch1l/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://ph.pinterest.com/Lightrose776/_profile/" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Profile Section -->
+        <section class="profile-section" data-animation>
+          <div class="decorative-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+          
+          <div class="profile-picture-container">
+              <div class="profile-bg"></div>
+              <img src="images/img_1.png" alt="Carlene's profile" class="profile-img">
+          </div>
+          
+          <div class="intro-box">
+            <h2>Carlene Hanz Palapal</h2>
+            <p>Data Analyst & Creative Technologist</p>
+            
+            <div class="professional-intro">
+                <p>As a computer science graduate from Our Lady of Fatima University, I specialize in transforming complex data into actionable insights through innovative analysis and visualization techniques. My dual expertise in data science and digital animation allows me to bridge the gap between technical precision and creative expression.</p>
+                
+                <p>Currently advancing my skills in machine learning applications for creative industries, I'm passionate about developing data-driven solutions that enhance user experiences while maintaining rigorous analytical standards. My work represents the intersection of logical problem-solving and artistic vision.</p>
+                
+                <p>When not optimizing data pipelines, I contribute to open-source animation tools and mentor emerging technologists in developing their hybrid technical-creative skill sets.</p>
+            </div>
+        </div>
+          </div>
+      </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section-light" data-animation>
+            <h2>Professional Resume</h2>
+            <div class="resume-wrapper">
+            <div class="resume-category">
+                <h3>Experience</h3>
+                
+                <div class="resume-item">
+                    <h4>Data Analyst</h4>
+                    <span class="date">Accenture Data and Analytics Services | 2028</span>
+                    <ul>
+                        <li>Interpret complex data</li>
+                        <li>Ensure accuracy of collected data sets</li>
+                        <li>Optimize data collection and processing pipelines</li>
+                    </ul>
+                </div>
+                
+                <div class="resume-item">
+                    <h4>Animator</h4>
+                    <span class="date">Studio Bones | 2029</span>
+                    <ul>
+                        <li>Illustrate multiple frames of image</li>
+                        <li>Animate</li>
+                        <li>Assisted in VR animation projects</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="resume-category">
+                <h3>Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Critical Thinking</span>
+                    <span class="skill-tag">Coding Language</span>
+                    <span class="skill-tag">Interpersonal Communication</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Technical Writing</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Web Development</span>
+                    <span class="skill-tag">Digital Illustration</span>
+                    <span class="skill-tag">Video Editing</span>
+                    <span class="skill-tag">Multilingual Communication</span>
+                </div>
+            </div>
+            
+            <div class="resume-category">
+                <h3>Certifications</h3>
+                <div class="resume-item">
+                    <h4>Google Data Analytics Professional Certificate</h4>
+                    <span class="date">2028</span>
+                </div>
+                <div class="resume-item">
+                    <h4>Adobe Certified Professional in Visual Design</h4>
+                    <span class="date">2028</span>
+                </div>
+                <div class="resume-item">
+                    <h4>AWS Certified Cloud Practitioner</h4>
+                    <span class="date">2029</span>
+                </div>
+            </div>
+            
+            <div class="resume-category">
+                <h3>Education</h3>
+                <div class="resume-item">
+                    <h4>Elementary</h4>
+                    <span class="date">International Philippines School in Al-Khobar | 2012-2018</span>
+                </div>
+                <div class="resume-item">
+                    <h4>High School</h4>
+                    <span class="date">International Philippines School in Al-Khobar | 2018-2022</span>
+                    <h4>Senior High School</h4>
+                    <span class="date">City of San Jose del Monte National Science High School | 2022-2028</span>
+                </div>
+                <div class="resume-item">
+                    <h4>College</h4>
+                    <span class="date">Our Lady of Fatima University | 2024-Present</span>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section-dark" data-animation>
+            <h2>Creative Portfolio</h2>
+            
+            <div class="portfolio-container">
+                <div class="portfolio-column">                
+                    <div class="portfolio-item">
+                        <div class="portrait-media">  
+                            <img src="images/img_2.jpg" alt="The Scream by Edvard Munch (cubism ver.)" class="portrait-image">  
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>"The Scream by Edvard Munch (cubism ver.)"</h4>
+                            <p>Traditional Art</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portrait-media"> 
+                            <img src="images/img_3.jpg" alt="Original Character" class="portrait-image">  
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>Original Character</h4>
+                            <p>Digital Art</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portrait-media">
+                            <img src="images/img_4.jpg" alt="The Geisha" class="portrait-image"> 
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>"The Geisha"</h4>
+                            <p>Diamond Painting Art</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Second Column for Additional Images -->
+                <div class="portfolio-column">                
+                    <div class="portfolio-item">
+                        <div class="portrait-media">
+                            <img src="images/img_5.jpg" alt="Winter Aura" class="portrait-image">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>Winter Aura</h4>
+                            <p>Traditional Art</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portrait-media">
+                            <img src="images/img_6.jpg" alt="Ray with Flowers" class="portrait-image">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>Ray with Flowers</h4>
+                            <p>Photography</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-light" data-animation>
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <p>
+                            <i>📍</i>
+                            <span>Muzon, San Jose del Monte, Bulacan, Philippines</span>
+                        </p>
+                        <p>
+                            <i>📧</i>
+                            <span><a href="mailto:ccpalapal2150qc@student.fatima.edu.ph">ccpalapal2150qc@student.fatima.edu.ph</a></span>
+                        </p>
+                        <p>
+                            <i>📱</i>
+                            <span>123-456-7890</span>
+                        </p>
+                        <p>
+                            <i>🕒</i>
+                            <span>Available Monday-Friday, 9AM-5PM</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form action="#">
+                        <fieldset>
+                            <legend>Contact Form</legend>
+                            <label for="fullname">Full Name:</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                            
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                            
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone">
+                            
+                            <label for="message">Your Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                            
+                            <div style="margin-top: 1.5rem;">
+                                <button type="submit" id="send">Send Message</button>
+                                <button type="reset" id="clear">Clear Form</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <a href="#" class="back-to-top" title="Back to Top">↑</a>
+<footer>
+<p>&copy; 2025 Carlene Palapal. All rights reserved.</p>
+</footer>
+</body>
+</html>
